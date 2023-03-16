@@ -77,7 +77,7 @@ while ~isempty(S)
     S = updateFrontierEdge(G,S);
     
 %   i =numnodes(T)+1;
- ex = [];
+ 
         for i = numnodes(T):-1:1
             df = 0;
             ns = neighbors(G, i);
@@ -85,15 +85,14 @@ while ~isempty(S)
                 df = df + G.Nodes.dfN(ns(k));
             
             end        
-        if (~isinf(df)) &&(df~= 0)
+        if (~isinf(df))
 
                 S = [];
-                e = T.Nodes.origId(i);
-                ex(end+1) = [e];
-                t =ex(1);
+                t = T.Nodes.origId(i);
         end
-        
+            if (t ~= 0)
+                break
+            end
         end
-        
     end
 end % end function dfsSpanningTree

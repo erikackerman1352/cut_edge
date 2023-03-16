@@ -1,5 +1,5 @@
-function [eidx] = dfsNextEdge(G,S)
-  
+  function [eidx] = dfsNextEdge(G,S)
+
 %First, sort S from small to big
 sort_S = sort(S);
 
@@ -20,7 +20,4 @@ sort_S = sort(S);
             break
         end
     end
-
-
-
 end %end function dfsNextEdge

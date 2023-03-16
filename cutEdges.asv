@@ -23,6 +23,27 @@ while (numnodes(H) > 1)
     
    index = find(strcmp(H.Nodes.Name, H.Nodes.Name(1)));
    [t, path] = dfsPath(H, index);
+i =numnodes(T)+1;
+t = 0;
+         while (i ~= 0) && (t == 0)
+             i = i-1;
+            df = 0;
+            ns = neighbors(G, i);
+            for k = 1:length(ns)
+           df = df + G.Nodes.dfN(ns(k));
+            
+            end
+        
+        if ~isinf(df)
+
+                S = [];
+                t = T.Nodes.origId(i);
+                
+        end
+        if t~= 0;
+            break
+        end
+         end
 
    if (degree(H,t) ==1)
        cut_edge = outedges(H, t);

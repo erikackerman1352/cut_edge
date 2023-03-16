@@ -55,7 +55,7 @@ endp = [];
 
 % if S is empty, but we in order to be sure all nodes are discovered
 if (isempty(S_new))
-    S_new_2 = [];
+    
     %run a loop across all nodes again
     for j = 1:length(G.Nodes.Name)
         
@@ -82,11 +82,9 @@ if (isempty(S_new))
             
             %Find edge from the node above and the node with the Inf dfN. That
             S_new = min(findedge(G, endp(pos), j)); 
-            S_new_2(end+1) = [S_new];
             
         end
     end
-    S_new = S_new_2(S_new_2 ~=0);
 
     %if there is S is empty and the there is no nodes with Inf dfN, then all nodes are discovered, S_new will be the S_new above, which is empty 
     %after looping all the possible nodes.

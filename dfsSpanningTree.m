@@ -1,4 +1,4 @@
-function [t, T] = dfsPath(G,v_id)
+function [T] = dfsSpanningTree(G,v_id)
 
 % check if vertices have names
 if (~sum(ismember(G.Nodes.Properties.VariableNames,'Name')))
@@ -49,8 +49,8 @@ while ~isempty(S)
     
     % edge idx (in G) of the next edge
     eidx = dfsNextEdge(G,S);
-
-%     endpints of the chosen next edge
+    
+    % endpints of the chosen next edge
     endpts = G.Edges.EndNodes(eidx,:);
     endpts = findnode(G,{endpts{1} endpts{2}});
     
@@ -76,24 +76,5 @@ while ~isempty(S)
     % update the set of frontier edges
     S = updateFrontierEdge(G,S);
     
-%   i =numnodes(T)+1;
- ex = [];
-        for i = numnodes(T):-1:1
-            df = 0;
-            ns = neighbors(G, i);
-            for k = 1:length(ns)
-                df = df + G.Nodes.dfN(ns(k));
-            
-            end        
-        if (~isinf(df)) &&(df~= 0)
-
-                S = [];
-                e = T.Nodes.origId(i);
-                ex(end+1) = [e];
-                t =ex(1);
-        end
-        
-        end
-        
-    end
+end
 end % end function dfsSpanningTree
